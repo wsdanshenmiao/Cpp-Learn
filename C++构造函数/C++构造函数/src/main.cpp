@@ -8,6 +8,11 @@ public:
 	{
 		x = a;
 		y = b;
+		std::cout << "构造函数" << std::endl;
+	}
+	~Entity()
+	{
+		std::cout << "析构函数" << std::endl;
 	}
 	void Print()
 	{
@@ -21,6 +26,6 @@ public:
 };
 int main()
 {
-	Entity e(5.0f, 9.0f);
-	e.Print();
+	Entity e = Entity(5.0f, 9.0f);
+	//e.Print();
 }
