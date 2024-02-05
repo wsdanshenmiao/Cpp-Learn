@@ -1,27 +1,87 @@
-#include <iostream>
 
-//输出运算符
-class Entity
-{
-private:
-	int m_X, m_Y;
-public:
-	Entity(int x,int y)
-		:m_X(x),m_Y(y){}
-	friend std::ostream& operator<<(std::ostream& stream, Entity& e);
-};
 
-std::ostream& operator<<(std::ostream& stream, Entity& e)
-{
-	stream << e.m_X << " " << e.m_Y;
-	return stream;
-}
+//#include <iostream>
+//
+//class MyInteger
+//{
+//private:
+//	int m_Num1, m_Num2;
+//public:
+//	MyInteger()
+//		:m_Num1(0),m_Num2(0){}
+//	//前置++
+//	MyInteger& operator++()	//必须要返回引用
+//	{
+//		m_Num1++;
+//		m_Num2++;
+//		return *this;
+//	}
+//	//后置++,使用占位参数加以区别
+//	MyInteger operator++(int)	//不能返回引用，因为返回的是局部变量
+//	{
+//		MyInteger ret = *this;
+//		m_Num1++;
+//		m_Num2++;
+//		return ret;
+//	}
+//	//前置--
+//	MyInteger& operator--()
+//	{
+//		m_Num1--;
+//		m_Num2--;
+//		return *this;
+//	}
+//	MyInteger operator--(int)
+//	{
+//		MyInteger ret = *this;
+//		m_Num1--;
+//		m_Num2--;
+//		return ret;
+//	}
+//	friend std::ostream& operator<<(std::ostream& stream, const MyInteger& mint);
+//};
+//
+////输入操作符重载
+//std::ostream& operator<<(std::ostream& stream, const MyInteger& mint)
+//{
+//	stream << mint.m_Num1 << " " << mint.m_Num2;
+//	return stream;
+//}
+//
+//int main()
+//{
+//	MyInteger mint;
+//	std::cout << mint++ << std::endl;
+//	std::cout << ++mint << std::endl;
+//	std::cout << --mint << std::endl;
+//	std::cout << mint-- << std::endl;
+//	std::cout << mint << std::endl;
+//}
 
-int main()
-{
-	Entity e(10, 10);
-	std::cout << e << std::endl;
-}
+//#include <iostream>
+//
+////输出运算符
+//class Entity
+//{
+//private:
+//	int m_X, m_Y;
+//public:
+//	Entity(int x,int y)
+//		:m_X(x),m_Y(y){}
+//	friend std::ostream& operator<<(std::ostream& stream, Entity& e);
+//};
+//
+//std::ostream& operator<<(std::ostream& stream, Entity& e)
+//{
+//	stream << e.m_X << " " << e.m_Y;
+//	return stream;
+//}
+//
+//int main()
+//{
+//	Entity e(10, 10);
+//	std::cout << e << std::endl;
+//}
 
 //#include <iostream>
 //
