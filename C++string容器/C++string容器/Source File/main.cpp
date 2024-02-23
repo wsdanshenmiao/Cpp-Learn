@@ -1,47 +1,59 @@
 
-//** 追加函数原型：**
-//
-//* `string& operator+=(const char* str); `                   //重载+=操作符
-//* `string& operator+=(const char c); `                         //重载+=操作符
-//* `string& operator+=(const string& str); `                //重载+=操作符
-//* `string& append(const char* s); `                               //把字符串s连接到当前字符串结尾
-//* `string& append(const char* s, int n); `                 //把字符串s的前n个字符连接到当前字符串结尾
-//* `string& append(const string& s); `                           //同operator+=(const string& str)
-//* `string& append(const string& s, int pos, int n); `/ / 字符串s中从pos开始的n个字符连接到字符串结尾
-
+//string获取子串
 #include <string>
 #include <iostream>
 
 int main()
 {
-	//* `string& operator+=(const char* str); `                   //重载+=操作符
-	std::string str1("Little");
-	str1 += "Buster";
-
-	//* `string& operator+=(const char c); `                         //重载+=操作符
-	std::string str2("Air");
-	str2 += ':';
-
-	//* `string& operator+=(const string& str); `                //重载+=操作符
-	std::string str3("Thousands of years of inheritance");
-	str2 += str3;
-
-	//* `string& append(const char* s); `                               //把字符串s连接到当前字符串结尾
-	std::string str4("U");
-	str4.append("-ena");
-	
-	//* `string& append(const char* s, int n); `                 //把字符串s的前n个字符连接到当前字符串结尾
-	str4.append("air hanavi", 5);
-
-	//* `string& append(const string& s); `                           //同operator+=(const string& str)
-	std::string str5("asd");
-	str5.append(str4);
-
-	//* `string& append(const string& s, int pos, int n); `/ / 字符串s中从pos开始的n个字符连接到字符串结尾
-	str1.append(str2, 0, 3);	//pos从零开始
-	std::cout << str1 << std::endl;
-
+	std::string email("danshenmiao@outlook.com");
+	int pos = email.find('@');
+	std::string username = email.substr(0, pos);
+	std::cout << username << std::endl;
 }
+
+////** 追加函数原型：**
+////
+////* `string& operator+=(const char* str); `                   //重载+=操作符
+////* `string& operator+=(const char c); `                         //重载+=操作符
+////* `string& operator+=(const string& str); `                //重载+=操作符
+////* `string& append(const char* s); `                               //把字符串s连接到当前字符串结尾
+////* `string& append(const char* s, int n); `                 //把字符串s的前n个字符连接到当前字符串结尾
+////* `string& append(const string& s); `                           //同operator+=(const string& str)
+////* `string& append(const string& s, int pos, int n); `/ / 字符串s中从pos开始的n个字符连接到字符串结尾
+//
+//#include <string>
+//#include <iostream>
+//
+//int main()
+//{
+//	//* `string& operator+=(const char* str); `                   //重载+=操作符
+//	std::string str1("Little");
+//	str1 += "Buster";
+//
+//	//* `string& operator+=(const char c); `                         //重载+=操作符
+//	std::string str2("Air");
+//	str2 += ':';
+//
+//	//* `string& operator+=(const string& str); `                //重载+=操作符
+//	std::string str3("Thousands of years of inheritance");
+//	str2 += str3;
+//
+//	//* `string& append(const char* s); `                               //把字符串s连接到当前字符串结尾
+//	std::string str4("U");
+//	str4.append("-ena");
+//	
+//	//* `string& append(const char* s, int n); `                 //把字符串s的前n个字符连接到当前字符串结尾
+//	str4.append("air hanavi", 5);
+//
+//	//* `string& append(const string& s); `                           //同operator+=(const string& str)
+//	std::string str5("asd");
+//	str5.append(str4);
+//
+//	//* `string& append(const string& s, int pos, int n); `/ / 字符串s中从pos开始的n个字符连接到字符串结尾
+//	str1.append(str2, 0, 3);	//pos从零开始
+//	std::cout << str1 << std::endl;
+//
+//}
 
 ////赋值的函数原型：
 ////

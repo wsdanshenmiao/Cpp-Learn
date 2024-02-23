@@ -1,2 +1,3 @@
 ﻿  main.cpp
+D:\Git版本管理\C++-Learn\C++string容器\C++string容器\Source File\main.cpp(9,10): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
   C++string容器.vcxproj -> D:\Git版本管理\C++-Learn\C++string容器\Build\bin\x64\Debug\C++string容器.exe
