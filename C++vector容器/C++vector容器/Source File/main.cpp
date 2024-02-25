@@ -8,6 +8,8 @@ class Entity
 private:
 	int m_X, m_Y;
 public:
+	Entity()
+		:m_X(0),m_Y(0){}
 	Entity(int x, int y)
 		:m_X(x), m_Y(y) {}
 };
@@ -18,13 +20,30 @@ int main()
 	for (int i = 0; i < 5; i++) {
 		v1.push_back(Entity(i, i + 1));
 	}
-	//v1.show();
 	v1.pop_back();
 	v1.pop_back();
-	//v1.show();
 	std::cout << v1.size() << v1.capacity() << std::endl;
-
+	v1.reserve(10);
+	v1[3] = Entity(10, 10);
+	v1.resize(15);
+	v1.resize(20, Entity(5, 5));
+	try {
+		v1.at(100);
+	}
+	catch(std::out_of_range& msg){
+		std::cout << msg.what() << std::endl;
+	}
 }
+
+//int main()
+//{
+//	std::vector<int> v1;
+//	for (int i = 0; i < 5; i++) {
+//		v1.push_back(i);
+//	}
+//	v1.resize(4657);
+//	std::cout << v1.at(1) << std::endl;
+//}
 
 //#include <vector>
 //#include <iostream>
