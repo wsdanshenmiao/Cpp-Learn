@@ -10,11 +10,136 @@ namespace mystl
 		size_t m_Size;
 		size_t m_Capacity;
 
+	public:
+		//对迭代器没有深入了解，粗糙的实现,反向的先不做了
+		class iterator
+		{
+		private:
+			T* m_pointer;
+
+		public:
+			iterator()
+				:m_pointer(nullptr) {}
+			iterator(T* pointer)
+				:m_pointer(pointer) {}
+			~iterator() {}
+
+			//成员函数
+			//解引用，vs还做了检测
+			inline T& operator*() const
+			{
+				return *m_pointer;
+			}
+
+			inline T& operator->() const
+			{
+				return m_pointer;
+			}
+
+			//前置加加,vs还进行了判断不知道是干啥的
+			inline iterator& operator++()
+			{
+				++m_pointer;
+				return *this;
+			}
+
+			//后置加加
+			inline iterator operator++(int)
+			{
+				iterator tmp = *this;
+				++(*this);
+				return tmp;
+			}
+
+			inline iterator& operator--()
+			{
+				--m_pointer;
+				return *this;
+			}
+
+			//后置加加
+			inline iterator operator--(int)
+			{
+				iterator tmp = *this;
+				--(*this);
+				return tmp;
+			}
+
+			inline iterator& operator+=(const int i)
+			{
+				m_pointer += i;
+				return *this;
+			}
+
+			//迭代器加某个数
+			inline iterator operator+(const int i) const
+			{
+				iterator tmp = *this;
+				tmp += i;
+				return tmp;
+			}
+
+			inline iterator& operator-=(const int i)
+			{
+				return *this += -i;
+			}
+
+			inline iterator operator-(const int i) const
+			{
+				iterator tmp = *this;
+				tmp -= i;
+				return tmp;
+			}
+
+			//计算两个迭代器之间的距离
+			inline __int64 operator-(const iterator& right) const
+			{
+				return m_pointer - right.m_pointer;
+			}
+
+			inline T& operator[](const int i) const
+			{
+				return *(*this + i);
+			}
+
+			inline bool operator==(const iterator& right) const
+			{
+				return this->m_pointer == right.m_pointer;
+			}
+
+			inline bool operator!=(const iterator& right) const
+			{
+				return !(*this == right);
+			}
+
+			inline bool operator<(const iterator& right) const
+			{
+				return this->m_pointer < right.m_pointer;
+			}
+
+			inline bool operator>(const iterator& right) const
+			{
+				return right < *this;
+			}
+
+			inline bool operator<=(const iterator& right) const
+			{
+				return !(right < *this);
+			}
+
+			inline bool operator>=(const iterator& right) const
+			{
+				return !(*this < right);
+			}
+		};
+
 	private:
 		void deallocate_memory();
 		inline T* allocate_memory(size_t size);
 		void _Resize(const size_t new_size, const T& t);
+
 	public:
+		//成员函数
 		Vector();
 		Vector(size_t capacity);
 		~Vector();
@@ -22,13 +147,23 @@ namespace mystl
 		inline void pop_back();
 		inline size_t size() const;
 		inline size_t capacity() const;
-		//void show() const;
 		void reserve(size_t new_cap);
 		inline void resize(const size_t new_cap);
 		inline void resize(const size_t new_size, const T& T);
 		inline T& at(size_t index) const;
+		inline bool empty() const;
+		inline void clear();
+		inline iterator begin();
+		inline iterator end();
+		inline iterator insert(Vector::iterator pos, const T& value);
+		inline iterator insert(Vector::iterator pos, size_t num, const T& value);
+
+
 
 		inline T& operator[](const int index);
+
+
+
 	};
 
 
@@ -50,7 +185,6 @@ namespace mystl
 	{
 		return static_cast<T*>(::operator new(sizeof(T) * size));
 	}
-
 
 
 	//默认构造
@@ -216,7 +350,96 @@ namespace mystl
 	}
 
 
+	//vs是使用指针判断
+	template <typename T>
+	inline bool Vector<T>::empty() const
+	{
+		return m_Size == 0;
+	}
+
+
+	//vs通过指针实现，可能还会销毁数据，并无效化迭代器，我不知怎么处理
+	template <typename T>
+	inline void Vector<T>::clear()
+	{
+		m_Size = 0;
+	}
+
+
+	//返回第一个元素的位置
+	template <typename T>
+	typename inline Vector<T>::iterator Vector<T>::begin()	//typename告诉编译器iterator是一个类型而不是变量
+	{
+		return Vector<T>::iterator(m_Data);
+	}
+
+
+	//返回最后一个元素的后一个位置
+	template <typename T>
+	typename inline Vector<T>::iterator Vector<T>::end()
+	{
+		return Vector<T>::iterator(m_Data + m_Size);
+	}
+
 	
+	//插入一个value
+	template <typename T>
+	typename inline Vector<T>::iterator Vector<T>::insert(Vector::iterator pos, const T& value)
+	{
+		return insert(pos, 1, value);
+	}
+
+	//插入num个value
+	template <typename T>
+	typename inline Vector<T>::iterator Vector<T>::insert(Vector::iterator pos, size_t num, const T& value)
+	{
+		if (pos < begin() || pos >= end()) {
+			throw std::out_of_range("out of range");
+		}
+		size_t size = static_cast<size_t>(pos - begin());
+		if (m_Capacity >= m_Size + num) {	//插入后无需扩容
+			if (num == 0) {
+				return Vector<T>::iterator(m_Data + size);
+			}
+			for (size_t i = m_Size; i > size; i--) {	//pos后的元素后移
+				m_Data[i + num - 1] = m_Data[i - 1];
+			}
+			for (size_t i = 0; i < num; i++) {
+				m_Data[size + i] = value;
+			}
+			m_Size += num;
+		}
+		else {	//插入后需要扩容
+			while (m_Capacity < m_Size + num) {	//扩容
+				m_Capacity = m_Capacity == 0 ? 1 : m_Capacity * 2;
+			}
+			T* data = new T[m_Capacity];
+			if (!data) {
+				exit(EXIT_FAILURE);
+			}
+			if (size > 0) {
+
+			}
+			for (size_t i = 0; i < size - 1 && size > 0; i++) {	//拷贝pos之前的数据
+				data[i] = m_Data[i];
+			}
+			for (size_t i = size == 0 ? 0 : size - 1; i < size + num; i++) {	//拷贝传入的数据
+				data[i] = value;
+			}
+			for (size_t i = size + num; i < m_Capacity; i++) {	//拷贝pos之后的数据
+				data[i] = m_Data[i - num];
+			}
+			if (m_Data) {
+				deallocate_memory();
+			}
+			m_Data = data;
+			data = nullptr;
+			m_Size += num;
+		}
+		return Vector<T>::iterator(m_Data + size);
+	}
+
+
 	//重载[]
 	template <typename T>
 	inline T& Vector<T>::operator[](const int index)

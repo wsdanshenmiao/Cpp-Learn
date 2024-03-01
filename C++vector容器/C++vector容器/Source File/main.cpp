@@ -2,18 +2,43 @@
 #include "Vector.cpp"
 #include <iostream>
 #include <vector>
+#include <typeinfo>
 
 class Entity
 {
-private:
-	int m_X, m_Y;
 public:
+	int m_X, m_Y;
+
 	Entity()
 		:m_X(0),m_Y(0){}
 	Entity(int x, int y)
 		:m_X(x), m_Y(y) {}
+
+	Entity& operator++()
+	{
+		m_X++;
+		m_Y++;
+		return *this;
+	}
+	Entity& operator++(int)
+	{
+		Entity e = *this;
+		m_X++;
+		m_Y++;
+		return e;
+	}
+
+	friend std::ostream& operator<<(std::ostream& stream, const Entity& e);
+
 };
 
+std::ostream& operator<<(std::ostream& stream, const Entity& e)
+{
+	stream << e.m_X << " " << e.m_Y << std::endl;
+	return stream;
+}
+
+#if 1
 int main()
 {
 	mystl::Vector<Entity> v1;
@@ -27,23 +52,43 @@ int main()
 	v1[3] = Entity(10, 10);
 	v1.resize(15);
 	v1.resize(20, Entity(5, 5));
-	try {
-		v1.at(100);
+	v1.resize(5);
+	//try {
+	//	v1.at(100);
+	//}
+	//catch(std::out_of_range& msg){
+	//	std::cout << msg.what() << std::endl;
+	//}
+	v1.insert(v1.begin(), 20, Entity(6, 6));
+	for (int i = 0; i < 20; i++) {
+		v1.insert(v1.begin(), Entity(4, 4));
 	}
-	catch(std::out_of_range& msg){
-		std::cout << msg.what() << std::endl;
+	for (mystl::Vector<Entity>::iterator it = v1.begin(); it < v1.end(); it++) {
+		std::cout << *it << std::endl;
 	}
+
 }
 
-//int main()
-//{
-//	std::vector<int> v1;
-//	for (int i = 0; i < 5; i++) {
-//		v1.push_back(i);
-//	}
-//	v1.resize(4657);
-//	std::cout << v1.at(1) << std::endl;
-//}
+#else
+int main()
+{
+	std::vector<int> v1;
+	for (int i = 0; i < 5; i++) {
+		v1.push_back(i);
+	}
+	v1.resize(10);
+	std::cout << v1.at(1) << std::endl;
+	std::vector<int>::iterator it1(v1.begin());
+	std::vector<int>::reverse_iterator it2 = v1.rbegin();
+	for (int i = 0; i < 20; i++) {
+		v1.insert(v1.begin(), 1);
+	}
+	for (std::vector<int>::iterator it = v1.begin(); it < v1.end(); it++) {
+		std::cout << *it << std::endl;
+	}
+	//std::cout << typeid(v1.end() - v1.begin()).name();
+}
+#endif
 
 //#include <vector>
 //#include <iostream>
