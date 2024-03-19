@@ -58,7 +58,7 @@ namespace mystl
 				return *this;
 			}
 
-			//后置加加
+			//后置减减
 			inline iterator operator--(int)
 			{
 				iterator tmp = *this;

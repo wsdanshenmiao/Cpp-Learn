@@ -49,6 +49,7 @@ int main()
 	for (int i = 0; i < 5; i++) {
 		v2.push_back(1);
 	}
+	mystl::Vector<int>::iterator it = v1.begin();
 	std::cout << (v1 > v2);
 
 	//mystl::Vector<Entity> v1;
