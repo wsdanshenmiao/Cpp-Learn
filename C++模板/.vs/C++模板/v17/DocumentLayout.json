@@ -1,0 +1,80 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Code\\C\u002B\u002B\\C\u002B\u002B-Learn\\C\u002B\u002B\u6A21\u677F\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{58E974C1-A413-45A6-9C52-66067979B113}|C\u002B\u002B\u6A21\u677F\\C\u002B\u002B\u6A21\u677F.vcxproj|D:\\Code\\C\u002B\u002B\\C\u002B\u002B-Learn\\C\u002B\u002B\u6A21\u677F\\C\u002B\u002B\u6A21\u677F\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{58E974C1-A413-45A6-9C52-66067979B113}|C\u002B\u002B\u6A21\u677F\\C\u002B\u002B\u6A21\u677F.vcxproj|solutionrelative:C\u002B\u002B\u6A21\u677F\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58E974C1-A413-45A6-9C52-66067979B113}|C\u002B\u002B\u6A21\u677F\\C\u002B\u002B\u6A21\u677F.vcxproj|C:\\PROGRAM FILES\\MICROSOFT VISUAL STUDIO\\2022\\COMMUNITY\\VC\\TOOLS\\MSVC\\14.39.33519\\INCLUDE\\LIST||{3B902123-F8A7-4915-9F01-361F908088D0}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58E974C1-A413-45A6-9C52-66067979B113}|C\u002B\u002B\u6A21\u677F\\C\u002B\u002B\u6A21\u677F.vcxproj|D:\\Code\\C\u002B\u002B\\C\u002B\u002B-Learn\\C\u002B\u002B\u6A21\u677F\\C\u002B\u002B\u6A21\u677F\\src\\Entity.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{58E974C1-A413-45A6-9C52-66067979B113}|C\u002B\u002B\u6A21\u677F\\C\u002B\u002B\u6A21\u677F.vcxproj|solutionrelative:C\u002B\u002B\u6A21\u677F\\src\\Entity.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 283,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "list",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\list",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\list",
+              "ViewState": "AQIAAOACAAAAAAAAAAAmwPACAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-24T03:08:10.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "D:\\Code\\C\u002B\u002B\\C\u002B\u002B-Learn\\C\u002B\u002B\u6A21\u677F\\C\u002B\u002B\u6A21\u677F\\src\\main.cpp",
+              "RelativeDocumentMoniker": "C\u002B\u002B\u6A21\u677F\\src\\main.cpp",
+              "ToolTip": "D:\\Code\\C\u002B\u002B\\C\u002B\u002B-Learn\\C\u002B\u002B\u6A21\u677F\\C\u002B\u002B\u6A21\u677F\\src\\main.cpp",
+              "RelativeToolTip": "C\u002B\u002B\u6A21\u677F\\src\\main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-23T09:52:14.688Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Entity.hpp",
+              "DocumentMoniker": "D:\\Code\\C\u002B\u002B\\C\u002B\u002B-Learn\\C\u002B\u002B\u6A21\u677F\\C\u002B\u002B\u6A21\u677F\\src\\Entity.hpp",
+              "RelativeDocumentMoniker": "C\u002B\u002B\u6A21\u677F\\src\\Entity.hpp",
+              "ToolTip": "D:\\Code\\C\u002B\u002B\\C\u002B\u002B-Learn\\C\u002B\u002B\u6A21\u677F\\C\u002B\u002B\u6A21\u677F\\src\\Entity.hpp",
+              "RelativeToolTip": "C\u002B\u002B\u6A21\u677F\\src\\Entity.hpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-23T09:52:14.735Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

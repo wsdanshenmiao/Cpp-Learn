@@ -21,4 +21,6 @@ void Entity<T>::Function()
 {
 }
 
+
+
 #endif // !__ENTITY__HPP__
